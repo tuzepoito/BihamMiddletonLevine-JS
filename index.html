@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Biham-Middleton-Levine traffic model</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="bml.css" type="text/css">
+<script src="bml.js"></script>
+</head>
+
+<body>
+
+<h1>Biham-Middleton-Levine traffic model</h1>
+
+<canvas id="maincanvas" height=256 width=256></canvas>
+
+<p>
+  <input type="range" id="density" value="32" min="0" max="100" step="0.01" />
+  <label class="rangeLabel" for="density">Density: <span id="densityText"></span>%</label>
+</p>
+
+<p>
+  <button id="pauseButton">Pause</button>
+  <button id="stepButton">Step</button>
+  <button id="resetButton">Reset</button>
+</p>
+
+<p>Iteration count: <span id="iteration"></span></p>
+<div id="fps"></div>
+
+
+<p id="presentation">
+  This is a JavaScript implementation of the Biham-Middleton-Levine traffic model, a self-organizaing cellular
+  automaton.<br />
+  There are two types of pixels, or "cars": red cars, which can only move to the right, and blue cars, which can only
+  move to the bottom.<br />
+  At each step, a car may only advance if the pixel in front is not occupied by another car.<br />
+  You can adjust the density (initial ratio of car pixels over total number of pixels) with the slider. If you change
+  the density, the automaton will be reinitialized.<br />
+  The result may change drastically depending on the initial density. Naturally, high values will result in the traffic
+  eventually going into a "jammed" state. Some values provide interesting results.<br />
+  While the base rules are simple, the behaviour that derives may prove to become complex and has been a subject of
+  study. Check the <a href="https://en.wikipedia.org/wiki/Biham%E2%80%93Middleton%E2%80%93Levine_traffic_model">Wikipedia
+  page</a> for more information.<br />
+</p>
+
+<footer>by <a href="/">Cédric "tuzepoito" Chartron</a> - 2019.</footer>
+
+</body>
+</html>
