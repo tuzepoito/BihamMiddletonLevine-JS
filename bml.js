@@ -1,6 +1,10 @@
 // implementation of the Biham-Middleton-Levine traffic model.
 // author : Cédric "tuzepoito" Chartron
 
+// fallback for requestAnimationFrame
+var requestAnimation = window.requestAnimationFrame ||
+  function (callback, el) { setTimeout(callback, 1000/60.0); };
+
 var BML = function (ctx, width, height) {
   var COLOR_WHITE = 0;
   var COLOR_RED = 1;
@@ -201,7 +205,7 @@ window.addEventListener("load", function () {
       }
     }
     
-    requestAnimationFrame(render);
+    requestAnimation(render);
   }
 
   var pauseButton = document.getElementById("pauseButton");
@@ -227,7 +231,7 @@ window.addEventListener("load", function () {
   densityText.innerText = densityRange.value;
 
   function displayDensity() {
-    var newDensity = Number.parseFloat(densityRange.value);
+    var newDensity = parseFloat(densityRange.value);
     densityText.innerText = newDensity.toFixed(2);
     return newDensity;
   }
@@ -260,5 +264,5 @@ window.addEventListener("load", function () {
   densityRange.addEventListener("change", updateDensity);
   densityRange.addEventListener("input", displayDensity);
 
-  requestAnimationFrame(render);
+  requestAnimation(render);
 });
